@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { CalendarDays, Phone } from 'lucide-react';
+import Medical3DScene from './Medical3DScene';
 
 const Hero = () => {
   const scrollToAppointments = () => {
@@ -12,7 +13,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-primary-50 to-blue-50 py-12 md:py-24">
+    <div className="bg-gradient-to-r from-primary-50 to-green-50 py-12 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10 animate-fade-in">
@@ -40,11 +41,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="md:w-1/2 animate-fade-in animate-delay-200">
-            <img 
-              src="https://images.unsplash.com/photo-1631815588090-108d3572ef99?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-              alt="Healthcare professionals" 
-              className="rounded-lg shadow-2xl"
-            />
+            <Medical3DScene />
           </div>
         </div>
         
