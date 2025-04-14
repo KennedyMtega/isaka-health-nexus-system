@@ -1,10 +1,19 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Float, BakeShadows } from '@react-three/drei';
+import { OrbitControls, Float, BakeShadows } from '@react-three/drei';
 import { Heart, Brain, Pill, Stethoscope, Syringe, Thermometer } from 'lucide-react';
+import * as THREE from 'three';
 
-const MedicalIcon = ({ position, rotation, scale, color, children }: any) => {
+interface MedicalIconProps {
+  position: [number, number, number];
+  rotation?: [number, number, number];
+  scale: number | [number, number, number];
+  color: string;
+  children?: React.ReactNode;
+}
+
+const MedicalIcon: React.FC<MedicalIconProps> = ({ position, rotation, scale, color }) => {
   const groupRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
@@ -13,8 +22,10 @@ const MedicalIcon = ({ position, rotation, scale, color, children }: any) => {
     }
   });
 
+  const actualScale = typeof scale === 'number' ? [scale, scale, scale] : scale;
+
   return (
-    <group ref={groupRef} position={position} rotation={rotation} scale={scale}>
+    <group ref={groupRef} position={position} rotation={rotation} scale={actualScale as [number, number, number]}>
       <mesh>
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color={color} transparent opacity={0.8} />
@@ -49,20 +60,20 @@ const Scene = () => {
   );
 };
 
-const Medical3DScene = () => {
+const Medical3DScene: React.FC = () => {
   return (
-    <div className="medical-3d-container">
+    <div className="relative w-full h-[400px] md:h-[500px]">
       <Canvas shadows camera={{ position: [0, 0, 10], fov: 50 }}>
         <Scene />
       </Canvas>
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="grid grid-cols-3 gap-8">
-          <Heart className="h-12 w-12 text-primary-600 animate-float" />
-          <Brain className="h-12 w-12 text-primary-400 animate-float animate-delay-200" />
-          <Stethoscope className="h-12 w-12 text-primary-700 animate-float animate-delay-300" />
-          <Pill className="h-12 w-12 text-primary-500 animate-float animate-delay-100" />
-          <Syringe className="h-12 w-12 text-primary-800 animate-float animate-delay-400" />
-          <Thermometer className="h-12 w-12 text-primary-300 animate-float animate-delay-500" />
+          <Heart className="h-12 w-12 text-green-600 animate-float" />
+          <Brain className="h-12 w-12 text-green-400 animate-float animate-delay-200" />
+          <Stethoscope className="h-12 w-12 text-green-700 animate-float animate-delay-300" />
+          <Pill className="h-12 w-12 text-green-500 animate-float animate-delay-100" />
+          <Syringe className="h-12 w-12 text-green-800 animate-float animate-delay-400" />
+          <Thermometer className="h-12 w-12 text-green-300 animate-float animate-delay-500" />
         </div>
       </div>
     </div>
