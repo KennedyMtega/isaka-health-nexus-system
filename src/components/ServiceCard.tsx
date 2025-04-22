@@ -27,6 +27,10 @@ const ServiceCard = ({
   const handleLearnMore = () => {
     if (departmentId) {
       navigate(`/department/${departmentId}`);
+    } else {
+      // If no department ID is provided, use a lowercase version of the title
+      const id = title.toLowerCase().replace(/\s+/g, '');
+      navigate(`/department/${id}`);
     }
   };
 
