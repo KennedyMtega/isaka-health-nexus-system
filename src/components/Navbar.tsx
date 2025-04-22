@@ -9,6 +9,13 @@ const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
@@ -16,8 +23,11 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <a href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-primary-600 font-bold text-2xl">Isaka</span>
-              <span className="text-accent ml-1 font-bold text-2xl">Health</span>
+              <img 
+                src="/lovable-uploads/b2a21cd8-37a5-4def-b7a9-d73ba2767b06.png" 
+                alt="Isaka Polyclinic Logo" 
+                className="h-12 w-auto"
+              />
             </a>
           </div>
           
@@ -32,9 +42,13 @@ const Navbar = () => {
             <a href="#appointments" className="text-gray-600 hover:text-primary-600 transition-colors">
               Appointments
             </a>
-            <a href="#contact" className="text-gray-600 hover:text-primary-600 transition-colors">
+            <Button 
+              variant="ghost" 
+              className="text-gray-600 hover:text-primary-600"
+              onClick={scrollToContact}
+            >
               Contact
-            </a>
+            </Button>
             <Button 
               variant="outline" 
               className="border-primary-600 text-primary-600 hover:bg-primary-50"
@@ -86,13 +100,15 @@ const Navbar = () => {
             >
               Appointments
             </a>
-            <a 
-              href="#contact" 
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary-600 hover:bg-primary-50"
-              onClick={() => setIsMenuOpen(false)}
+            <button
+              className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary-600 hover:bg-primary-50"
+              onClick={() => {
+                setIsMenuOpen(false);
+                scrollToContact();
+              }}
             >
               Contact
-            </a>
+            </button>
             <Button 
               variant="outline" 
               className="w-full mt-4 border-primary-600 text-primary-600 hover:bg-primary-50"

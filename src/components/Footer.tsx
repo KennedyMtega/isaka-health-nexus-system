@@ -4,6 +4,10 @@ import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin } fr
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const clinicName = "Isaka Polyclinic";
+  const phone = "0748 443 370";
+  const email = "isakapolyclinic2022@gmail.com";
+  const address = "Plot No 5. Block K, Isaka Road, Majengo Street, Kahama, Shinyanga";
   
   return (
     <footer id="contact" className="bg-gray-900 text-white pt-12 pb-6">
@@ -11,7 +15,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Isaka Polyclinic</h3>
+            <div className="flex items-center mb-4">
+              <img 
+                src="/lovable-uploads/b2a21cd8-37a5-4def-b7a9-d73ba2767b06.png" 
+                alt="Isaka Polyclinic Logo" 
+                className="h-12 w-auto bg-white rounded-lg p-1"
+              />
+            </div>
+            <p className="text-gray-400 mb-2">Afya Yako, Kipaumbele Chetu</p>
             <p className="text-gray-400 mb-4">
               Providing quality healthcare services with state-of-the-art facilities and experienced professionals.
             </p>
@@ -84,15 +95,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={18} className="mr-2 mt-1 text-primary-400" />
-                <span className="text-gray-400">123 Healthcare Avenue, Isaka, Tanzania</span>
+                <span className="text-gray-400">{address}</span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-2 text-primary-400" />
-                <span className="text-gray-400">+255 765 432 100</span>
+                <span className="text-gray-400">{phone}</span>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 text-primary-400" />
-                <span className="text-gray-400">info@isakaclinic.com</span>
+                <span className="text-gray-400">{email}</span>
               </li>
             </ul>
           </div>
@@ -100,7 +111,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-800 pt-6">
           <p className="text-center text-gray-400 text-sm">
-            &copy; {currentYear} Isaka Polyclinic. All rights reserved.
+            &copy; {currentYear} {clinicName}. All rights reserved.
           </p>
         </div>
       </div>
